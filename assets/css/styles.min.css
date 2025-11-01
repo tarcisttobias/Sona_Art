@@ -127,7 +127,8 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--cor-3);
 }
 .header {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   grid-template-columns: 1fr 5fr;
   padding: 40px 30px 0 30px;
   align-items: center;
@@ -152,7 +153,8 @@ body::-webkit-scrollbar-thumb {
     gap: 20px;
   }
   .header-menu {
-    justify-content: flex-start;
+    justify-content: flex-end;
+    
   }
   .header-menu li a {
     background-color: var(--cor-1-b);
