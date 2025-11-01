@@ -1,0 +1,16 @@
+@import url(./global/global.css);
+@import url(./utilidades/cores.css);
+@import url(./utilidades/tipografia.css);
+@import url(./global/header.css);
+@import url(./global/footer.css);
+@import url(./home/intro.css);
+@import url(./home/section-card.css);
+@import url(./home/experimente.css);
+@import url(./home/portfolio.css);
+@import url(./home/depoimentos.css);
+@import url(./lista/lista-servicos.css);
+@import url(./utilidades/componentes.css);
+
+
+
+
