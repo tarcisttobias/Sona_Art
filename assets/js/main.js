@@ -7,3 +7,23 @@ const btntop = document.querySelector('.top')
 window.addEventListener("scroll", (event) => {
     toggleVisibility(btntop, 'visivel')
 })
+
+
+  (function(){
+    const headerBg = document.getElementById('site-header');
+    if (!headerBg) return;
+
+    const scrollThreshold = 20; // px para ativar o shrink
+
+    const onScroll = () => {
+      if (window.scrollY > scrollThreshold) {
+        headerBg.classList.add('scrolled');
+      } else {
+        headerBg.classList.remove('scrolled');
+      }
+    };
+
+    // roda uma vez para checar estado inicial e adiciona listener
+    onScroll();
+    window.addEventListener('scroll', onScroll, {passive: true});
+  })();
