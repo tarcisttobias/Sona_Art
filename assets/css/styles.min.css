@@ -221,7 +221,7 @@ body::-webkit-scrollbar-thumb {
   display: grid;
   grid-template-columns: 1fr 1fr;
   place-items: center;
-  padding: 60px 60px 100px 60px;
+  padding: 120px 60px 100px 60px;
 }
 .introducao-conteudo h1 {
   font: 4rem Aclonica, sans-serif;
@@ -234,14 +234,17 @@ body::-webkit-scrollbar-thumb {
 .introducao-conteudo a {
   margin-top: 40px;
 }
+
 @media (max-width: 800px) {
   .introducao {
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 120px 30px 120px 30px;
+    display: flex;  
   }
   .introducao-img img {
-    display: flex;
+    display: inline;
+    max-height: 350px;
 
   }
 }
@@ -254,7 +257,7 @@ body::-webkit-scrollbar-thumb {
   }
   .introducao-img img {
     display: inline;
-    max-height: 250px;
+    max-height: 350px;
   }
   .introducao-conteudo h1 {
     font-size: 2.5rem;
@@ -454,6 +457,7 @@ body::-webkit-scrollbar-thumb {
 }
 .servicos-conteudo {
   position: relative;
+  padding: 120px 0 0 0;
 }
 .servicos-conteudo::before {
   content: "";
