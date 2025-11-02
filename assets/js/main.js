@@ -7,3 +7,5 @@ const btntop = document.querySelector('.top')
 window.addEventListener("scroll", (event) => {
     toggleVisibility(btntop, 'visivel')
 })
+
+
