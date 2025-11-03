@@ -10,38 +10,92 @@ window.addEventListener("scroll", (event) => {
 
 
 function copyPix() {
-    const pixKey = document.getElementById('pix-key').innerText;
+    // Chave Pix definida diretamente no script
+    const pixKey = "24 93500-0980";
     
-    // Tenta o método moderno primeiro
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(pixKey)
             .then(() => {
-                alert('Chave Pix copiada com sucesso!');
+                showCopyFeedback('Chave Pix copiada com sucesso!');
             })
             .catch(err => {
                 console.error('Erro ao copiar: ', err);
-                // Fallback
-                copyFallback(pixKey);
+                fallbackCopyText(pixKey);
             });
     } else {
-        // Usa fallback
-        copyFallback(pixKey);
+        fallbackCopyText(pixKey);
     }
 }
 
-function copyFallback(text) {
+function fallbackCopyText(text) {
     const textArea = document.createElement('textarea');
     textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
     document.body.appendChild(textArea);
+    textArea.focus();
     textArea.select();
     
     try {
-        document.execCommand('copy');
-        alert('Chave Pix copiada com sucesso!');
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopyFeedback('Chave Pix copiada com sucesso!');
+        } else {
+            showCopyFeedback('Falha ao copiar. Selecione e copie manualmente.', 'error');
+        }
     } catch (err) {
         console.error('Erro no fallback: ', err);
-        alert('Falha ao copiar. Selecione e copie manualmente: ' + text);
+        showCopyFeedback('Erro ao copiar. Selecione e copie manualmente.', 'error');
     } finally {
         document.body.removeChild(textArea);
     }
 }
+
+function showCopyFeedback(message, type = 'success') {
+    const existingFeedback = document.querySelector('.copy-feedback');
+    if (existingFeedback) {
+        existingFeedback.remove();
+    }
+    
+    const feedback = document.createElement('div');
+    feedback.className = `copy-feedback ${type}`;
+    feedback.textContent = message;
+    feedback.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+        color: white;
+        padding: 12px 20px;
+        border-radius: 4px;
+        z-index: 10000;
+        font-family: Poppins, sans-serif;
+        font-size: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(feedback);
+    
+    setTimeout(() => {
+        if (feedback.parentNode) {
+            feedback.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => feedback.remove(), 300);
+        }
+    }, 3000);
+}
+
+// Adiciona os estilos de animação
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);

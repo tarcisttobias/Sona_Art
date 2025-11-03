@@ -458,55 +458,75 @@ div[id],
 .pagamento-bg {
     position: relative;
     background-color: var(--cor-3);
-    padding: 50px 60px 30px;
+    padding: 120px 0 60px 0;
 }
 
-/* Container alinhado com outras seções */
 .pagamento.container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0px;
-    text-align: left;
+    gap: 40px;
+    padding: 0 60px;
 }
 
-/* Título padronizado como outras seções */
+/* Título alinhado à esquerda seguindo o padrão da seção de serviços */
 .pagamento .titulo {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0px;    
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 24px;
+    padding: 20px 0;
+    color: var(--cor-2-b);
+    text-align: left;
+    justify-content: flex-start;
 }
 
 .pagamento .titulo h2 {
     color: var(--cor-2-b);
-    margin-bottom: 0px;
+    text-align: left;
+    font: 600 1.25rem/1.25 Poppins, sans-serif;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
 }
 
-/* Conteúdo de pagamentos em cards */
-.pagamento-cards {
+/* Texto descritivo alinhado à esquerda seguindo o padrão da seção de serviços */
+.pagamento-conteudo {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    text-align: left;
+}
+
+.pagamento-conteudo .font-1-l {
+    text-align: left;
+    font: 400 1.5rem/1.3 Poppins, sans-serif;
+    color: var(--cor-4);
+    max-width: none;
+}
+
+.pagamento-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 32px;
-    padding: 24px 0;
     width: 100%;
 }
 
-.pagamento-card {
+.pagamento-cards .card {
     background-color: var(--cor-0);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
     padding: 32px;
     gap: 16px;
     border-radius: 5px;
-    min-width: 250px;
+    text-align: center;
+    height: auto;
+    min-height: 300px;
     position: relative;
 }
 
-.pagamento-card::before {
+.pagamento-cards .card::before {
     content: "";
     width: 80px;
     height: 80px;
@@ -516,89 +536,30 @@ div[id],
     right: 0;
 }
 
-.pagamento-card img {
+.pagamento-cards .card img {
     width: 80px;
-    margin: 0 auto;
+    height: 80px;
+    object-fit: contain;
 }
 
-/* Seção Pix específica */
-.pix-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    background: var(--cor-1-b);
-    padding: 20px;
-    border-radius: 5px;
-    margin-top: 16px;
+.pagamento-cards .card h3 {
+    color: var(--cor-2-b);
+    margin: 8px 0;
+    font: 500 1.25rem/1.25 Poppins, sans-serif;
 }
 
-/* Botão igual aos outros do site */
-.pix-section .btn {
-    padding: 18px 28px;
-    border-radius: 30px;
-    background-color: var(--cor-2);
-    color: var(--cor-0);
-    font: 500 1.12rem/1.3 Poppins, sans-serif;
-    text-transform: uppercase;
-    max-width: max-content;
-    display: inline-block;
-    text-align: center;
+.pagamento-cards .card span {
+    color: var(--cor-4);
+    margin-bottom: 8px;
+    font: 400 1.12rem/1.3 Poppins, sans-serif;
 }
 
-.pix-section .btn:hover {
-    background-color: var(--cor-2-b);
-    transform: scale(1.01) translateY(-2px);
-    transition: 0.2s;
-}
-
-/* ===== RESPONSIVO ===== */
-@media (max-width: 800px) {
-    .pagamento-bg {
-        padding: 100px 30px 30px;
-    }
-    
-    .pagamento-cards {
-        gap: 24px;
-    }
-    
-    .pagamento-card {
-        min-width: 200px;
-        padding: 24px;
-    }
-    
-    .pix-section {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 600px) {
-    .pagamento-bg {
-        padding: 80px 20px 20px;
-    }
-    
-    .pagamento-cards {
-        flex-direction: column;
-        gap: 18px;
-    }
-    
-    .pagamento-card {
-        min-width: auto;
-    }
-    
-    .pagamento-bg::before,
-    .pagamento-bg::after {
-        display: none;
-    }
-}
-
-@media (max-width: 500px) {
-    .pagamento-bg {
-        padding: 60px 15px 15px;
-    }
+.pagamento-cards .card .btn {
+    margin-top: auto;
+    padding: 12px 24px;
+    font-size: 1rem;
+    width: auto;
+    min-width: 160px;
 }
 
 /* ===== CARDS ===== */
@@ -820,6 +781,38 @@ div[id],
     scroll-margin-top: 100px !important;
   }
 
+  /* Pagamento */
+  .pagamento-bg {
+    padding: 100px 0 40px 0;
+  }
+  
+  .pagamento.container {
+    padding: 0 30px;
+    gap: 32px;
+  }
+  
+  .pagamento .titulo {
+    gap: 12px;
+  }
+  
+  .pagamento-conteudo {
+    gap: 20px;
+  }
+  
+  .pagamento-conteudo .font-1-l {
+    font-size: 1.18rem;
+  }
+  
+  .pagamento-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .pagamento-cards .card {
+    padding: 24px;
+    min-height: 280px;
+  }
+
   /* Botões */
   .btn {
     padding: 16px 20px;
@@ -974,6 +967,40 @@ div[id],
     display: none;
   }
 
+  /* Pagamento */
+  .pagamento-bg {
+    padding: 80px 0 30px 0;
+  }
+  
+  .pagamento.container {
+    padding: 0 20px;
+    gap: 24px;
+  }
+  
+  .pagamento .titulo h2 {
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .pagamento-conteudo .font-1-l {
+    font-size: 1.1rem;
+  }
+  
+  .pagamento-cards {
+    gap: 20px;
+  }
+  
+  .pagamento-cards .card {
+    padding: 20px;
+    min-height: 260px;
+  }
+  
+  .pagamento-cards .card .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    min-width: 140px;
+  }
+
   /* Títulos */
   .titulo {
     gap: 8px;
@@ -1050,6 +1077,28 @@ div[id],
   .servicos-bg {
     scroll-margin-top: 100px !important;
   }
+
+  /* Pagamento */
+  .pagamento-bg {
+    padding: 60px 0 20px 0;
+  }
+  
+  .pagamento.container {
+    padding: 0 15px;
+    gap: 20px;
+  }
+  
+  .pagamento-cards .card {
+    padding: 16px;
+    min-height: 240px;
+    gap: 12px;
+  }
+  
+  .pagamento-cards .card img {
+    width: 60px;
+    height: 60px;
+  }
+
   .destaques-bg {
     scroll-margin-top: 100px !important;
   }
