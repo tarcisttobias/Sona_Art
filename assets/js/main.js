@@ -9,3 +9,39 @@ window.addEventListener("scroll", (event) => {
 })
 
 
+function copyPix() {
+    const pixKey = document.getElementById('pix-key').innerText;
+    
+    // Tenta o método moderno primeiro
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(pixKey)
+            .then(() => {
+                alert('Chave Pix copiada com sucesso!');
+            })
+            .catch(err => {
+                console.error('Erro ao copiar: ', err);
+                // Fallback
+                copyFallback(pixKey);
+            });
+    } else {
+        // Usa fallback
+        copyFallback(pixKey);
+    }
+}
+
+function copyFallback(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        alert('Chave Pix copiada com sucesso!');
+    } catch (err) {
+        console.error('Erro no fallback: ', err);
+        alert('Falha ao copiar. Selecione e copie manualmente: ' + text);
+    } finally {
+        document.body.removeChild(textArea);
+    }
+}
