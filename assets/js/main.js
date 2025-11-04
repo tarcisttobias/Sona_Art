@@ -8,6 +8,14 @@ window.addEventListener("scroll", (event) => {
     toggleVisibility(btntop, 'visivel')
 })
 
+// ADICIONE ESTE EVENT LISTENER PARA O BOTÃO PIX
+document.addEventListener('DOMContentLoaded', function() {
+    const copyPixButton = document.querySelector('.pagamento-cards .btn');
+    
+    if (copyPixButton) {
+        copyPixButton.addEventListener('click', copyPix);
+    }
+});
 
 function copyPix() {
     // Chave Pix definida diretamente no script
