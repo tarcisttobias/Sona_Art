@@ -998,6 +998,10 @@ div[id],
   .header-menu li a {
     font-size: 0.8rem;
   }
+  .introducao {
+    padding: 100px 20px 20px 20px;
+  }
+
   .introducao-conteudo h1 {
     white-space: wrap;
   }
